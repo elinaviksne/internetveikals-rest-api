@@ -9,10 +9,12 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\ShopController;
 
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/shops', [ShopController::class, 'index']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -23,4 +25,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('brands', BrandController::class);
     Route::apiResource('discounts', DiscountController::class);
     Route::apiResource('tags', TagController::class);
+    Route::apiResource('shops', ShopController::class)->except(['index']);
 });
